@@ -3,3 +3,4 @@ package:
   - pip install mkdocs-material
   - mkdocs build
 root: site
+
