@@ -1,6 +1,6 @@
 package:
   - pip install mkdocs
   - pip install mkdocs-material
-  - mkdocs build
+  - mkdocs build 
 root: site
 
