@@ -1,0 +1,796 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The Tech People">
+      
+      
+      
+      <link rel="shortcut icon" href="../ZimScape-03.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Command Line Interface - Zimscape Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.b302131d.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CUbuntu+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Ubuntu Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="black" data-md-color-accent="deep-purple">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#command-line-interface" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Zimscape Docs" class="md-header-nav__button md-logo" aria-label="Zimscape Docs">
+      
+  <img src="../ZimScape-03.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Zimscape Docs
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Command Line Interface
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Zimscape Docs" class="md-nav__button md-logo" aria-label="Zimscape Docs">
+      
+  <img src="../ZimScape-03.png" alt="logo">
+
+    </a>
+    Zimscape Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../getstarted/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Architecture
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Architecture" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Architecture
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../architecture/" title="A Deployment Platform - The PaaS Idea" class="md-nav__link">
+      A Deployment Platform - The PaaS Idea
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../architecture/projects/" title="Projects" class="md-nav__link">
+      Projects
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../architecture/containers/" title="Containers" class="md-nav__link">
+      Containers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../architecture/environments/" title="Environments" class="md-nav__link">
+      Environments
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../architecture/networking/" title="Networking" class="md-nav__link">
+      Networking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Command Line Interface
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Command Line Interface" class="md-nav__link md-nav__link--active">
+      Command Line Interface
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    Git
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-commands" class="md-nav__link">
+    Available Commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zimscape-login" class="md-nav__link">
+    zimscape login
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zimscape-ls" class="md-nav__link">
+    zimscape ls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zimscape-push-remote" class="md-nav__link">
+    zimscape push [REMOTE]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zimscape-logs-remote" class="md-nav__link">
+    zimscape logs [REMOTE]
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cd/" title="Continuous Deployment" class="md-nav__link">
+      Continuous Deployment
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Products
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Products" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Products
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../products/domains/" title="Domain Names" class="md-nav__link">
+      Domain Names
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../products/email/" title="Email Hosting" class="md-nav__link">
+      Email Hosting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../products/java/" title="Java" class="md-nav__link">
+      Java
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../products/nodejs/" title="Node JS" class="md-nav__link">
+      Node JS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../products/php/" title="PHP" class="md-nav__link">
+      PHP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../products/python/" title="Python" class="md-nav__link">
+      Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../data/" title="Data & Storage" class="md-nav__link">
+      Data & Storage
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../billing/" title="Billing" class="md-nav__link">
+      Billing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    Git
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-commands" class="md-nav__link">
+    Available Commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zimscape-login" class="md-nav__link">
+    zimscape login
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zimscape-ls" class="md-nav__link">
+    zimscape ls
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zimscape-push-remote" class="md-nav__link">
+    zimscape push [REMOTE]
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zimscape-logs-remote" class="md-nav__link">
+    zimscape logs [REMOTE]
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="command-line-interface">Command Line Interface</h1>
+<p>The Command Line Interface is intended to make it easier for software developers in particular
+to deploy software to development environments on zimscape.com. </p>
+<h3 id="git">Git</h3>
+<p>The Zimscape CLI requires that you have Git installed before hand as we use Git to move your source code. 
+If you're new to Git you can have a quick look at it 
+<a href="https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control">here</a>.</p>
+<p><a href="https://npmjs.org/package/zimscape-cli"><img alt="Version" src="https://img.shields.io/npm/v/zimscape-cli.svg" /></a>
+<a href="https://npmjs.org/package/zimscape-cli"><img alt="Downloads/week" src="https://img.shields.io/npm/dw/zimscape-cli.svg" /></a>
+<a href="https://github.com/vuskhoza/zimscape-cli/blob/master/package.json"><img alt="License" src="https://img.shields.io/npm/l/zimscape-cli.svg" /></a></p>
+<!-- toc -->
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#available-commands">Available Commands</a>
+<!-- tocstop --></li>
+</ul>
+<h3 id="installation">Installation</h3>
+<!-- usage -->
+
+<div class="codehilite"><pre><span></span><code>$ npm install -g zimscape-cli
+</code></pre></div>
+
+
+<p>Verify your version </p>
+<div class="codehilite"><pre><span></span><code>$ zimscape -v
+zimscape-cli/0.0.8 linux-x64 node-v11.10.1
+</code></pre></div>
+
+
+<!-- usagestop -->
+
+<h3 id="available-commands">Available Commands</h3>
+<!-- commands -->
+
+<ul>
+<li><a href="#zimscape-login"><code>zimscape login</code></a></li>
+<li><a href="#zimscape-ls"><code>zimscape ls</code></a></li>
+<li><a href="#zimscape-push-remote"><code>zimscape push [REMOTE]</code></a></li>
+<li><a href="#zimscape-logs-remote"><code>zimscape logs [REMOTE]</code></a></li>
+</ul>
+<h3 id="zimscape-login"><code>zimscape login</code></h3>
+<p>Login to zimscape.com. Here you'll be required to use the email address and password used to create a zimscape
+account.</p>
+<div class="codehilite"><pre><span></span><code>$ zimscape login
+Login in to your Zimscape.com account
+Account email: email@gmail.com
+Password: *********
+one moment please...
+Login successful :<span class="o">)</span>
+</code></pre></div>
+
+
+<h3 id="zimscape-ls"><code>zimscape ls</code></h3>
+<p>List development environments on Zimscape.com. This command give you a snapshot of all development environments
+under all currently active projects.</p>
+<div class="codehilite"><pre><span></span><code>$ zimscape ls
+one moment please...
+Product   Project                       Domain                        Type       Status 
+PHP       zimscape.com                  php.zimscape.com              staging    active 
+</code></pre></div>
+
+
+<h3 id="zimscape-push-remote"><code>zimscape push [REMOTE]</code></h3>
+<p>Use git to push current code base to chosen environment. This command is simply a wrapper of the common 
+<code>git push [remote] [branch]</code> command. To successfully push to a Zimscape remote you have to have a branch 
+named after the respective environment type e.g. in the example above, a <code>staging</code> branch.</p>
+<div class="codehilite"><pre><span></span><code>$ zimscape push php.zimscape.com
+one moment please...
+Counting objects: <span class="m">4</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">8</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">4</span>/4<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">4</span>/4<span class="o">)</span>, <span class="m">355</span> bytes <span class="p">|</span> <span class="m">355</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">4</span> <span class="o">(</span>delta <span class="m">3</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+remote: Ref refs/heads/staging received. Deploying <span class="s1">&#39;staging&#39;</span> branch...
+remote: Already on <span class="s1">&#39;staging&#39;</span>
+remote: Ref refs/heads/staging received and successfully deployed to staging
+remote: Stopping service...
+remote: Stopping daemon: php-staging.
+To gitserver.zimscape.com:php-project.git
+   85b2d82..347d647  staging -&gt; staging
+</code></pre></div>
+
+
+<p>In the absence of the matching branch you'll encounter an error:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">one moment please...</span>
+<span class="c">error: src refspec staging does not match any.</span>
+<span class="c">error: failed to push some refs to &#39;zimscape@gitserver.zimscape.com:php-project.git&#39;</span>
+</code></pre></div>
+
+
+<p>One way to create a new branch from a branch with your latest commits would be:</p>
+<div class="codehilite"><pre><span></span><code>$ git checkout -b staging
+</code></pre></div>
+
+
+<p>This command creates a branch <code>staging</code> identical to the current branch you're on.</p>
+<h3 id="zimscape-logs-remote"><code>zimscape logs [REMOTE]</code></h3>
+<p>Tail logs for chosen environment. This commands gives you insight into what's happening with your service
+as well as any other services running in the container environment. The logs returned are an amalgamation of
+as most of the activity that happens within an applications environment for example deployment logs, web server
+logs and service daemon logs.</p>
+<div class="codehilite"><pre><span></span><code>$ zimscape logs php.zimscape.com
+one moment please...
+Sun Apr <span class="m">19</span> <span class="m">12</span>:36:31 UTC <span class="m">2020</span> Ref refs/heads/staging received. Deploying <span class="s1">&#39;staging&#39;</span> branch...
+Sun Apr <span class="m">19</span> <span class="m">12</span>:36:31 UTC <span class="m">2020</span> Ref refs/heads/staging received and successfully deployed to staging
+</code></pre></div>
+
+
+<!-- commandsstop -->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../architecture/networking/" title="Networking" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Networking
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../cd/" title="Continuous Deployment" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Continuous Deployment
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

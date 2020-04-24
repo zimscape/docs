@@ -1,0 +1,35 @@
+site_name: Zimscape Docs
+site_description: The Tech People
+nav:
+  - Home: index.md
+  - Getting Started: getstarted.md
+  - Architecture:
+      - architecture/index.md
+      - architecture/projects.md
+      - architecture/containers.md
+      - architecture/environments.md
+      - architecture/networking.md
+  - cli.md
+  - cd.md
+  - Products:
+    - products/domains.md
+    - products/email.md
+    - products/java.md
+    - products/nodejs.md
+    - products/php.md
+    - products/python.md
+  - data.md
+  - billing.md
+  - troubleshooting.md
+theme:
+  name: material
+  palette:
+    primary: black
+    accent: deep purple
+  font:
+    text: Roboto
+    code: Ubuntu Mono
+  logo: ZimScape-03.png
+  favicon: ZimScape-03.png
+markdown_extensions:
+  - codehilite
