@@ -8,13 +8,13 @@ any billing disruption only applies on a per project basis.
 Things to note about billing on Zimscape:
  
 - Primary currency is ZWL (Zimbabwean Dollar)
-- All prices are convertible to support currencies at prevailing exchange rates. Supported currencies
+- All prices are convertible to supported currencies at prevailing exchange rates. Supported currencies
 are shown on the Shopping Cart checkout page.
 - The primary billing cycle is monthly. However, some products have longer or shorter cycles. For certainty
 check the shopping cart checkout page or product details page. 
 - Billing is considered per product not per order. This means that if an order has a domain name subscription 
 paid yearly and a dev environment subscription paid monthly then the next month's payment notice will only 
-have the dev environment's payment request.
+include the dev environment subscription.
 
 !!!important
     Product plans can be upgraded and downgraded at will. The caveat to this is that a new payment initiates a

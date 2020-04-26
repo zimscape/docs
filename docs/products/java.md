@@ -28,9 +28,11 @@ If you have these in order then proceed.
 
 ### Get the source code
 
-Clone the sample source code from the Spring Boot tutorials repository.
+Clone the sample source code from the Zimscape tutorials repository.
 
-`git clone git@github.com:zimscape/springboot-demo.git`
+```
+git clone git@github.com:zimscape/springboot-demo.git
+```
 
 ### Add a Controller
 
@@ -160,8 +162,8 @@ List the available environments using the [Zimscape cli](../cli.md):
 ```
 $ zimscape ls
 one moment please...
-Product   Project                       Domain                        Type       Status 
-JAVA      zimscape.com                  java.zimscape.com             staging    active 
+Product   Project                       Domain                        Type       Status    Ports
+JAVA      zimscape.com                  java.zimscape.com             staging    active    80  -> 9000 
 ```
 
 Push to the environment domain's remote:
