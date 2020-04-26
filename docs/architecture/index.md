@@ -20,7 +20,7 @@ to create an abstraction layer between software and the hardware resources neede
 the benefits of this [here](containers.md). However, In order to achieve
 this level of abstraction Zimscape insists that users follow certain conventions that otherwise wouldn't be 
 imposed by an ordinary web hosting provider. Whilst there might be a learning curve to some of these we believe
-that these convention make your work flow significantly easier especially when it comes to deployment.
+that these conventions make your work flow significantly easier especially when it comes to deployment.
 
 ## Business Solutions
 
