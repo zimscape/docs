@@ -27,7 +27,7 @@ staging:
   stage: staging
   image: vusakhoza/nodejs:12
   before_script:
-    - npm install zimscape-cli
+    - npm install -g zimscape-cli
   script:
     - zimscape push docs.zimscape.com
 
