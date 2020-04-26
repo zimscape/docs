@@ -18,13 +18,12 @@ Jenkins or Gitlab CI and then output meant for deployment deployed on Zimscape
 - For edge cases Zimscape does offer the ability to run commands before deploying a service via a 
 `.runfile.yml`
 
-### Runfile
+## Runfile
 
 The runfile is a yaml document that post deployment hooks on Zimscape servers use to know how to run an 
 application and whether or not there are commands that should precede the service run command. 
 
-The run file supports **three** keys; `package`, `run` and `root`. The `.runfile.yml` file itself and 
-all keys are optional.
+The `.runfile.yml` file itself and all keys are optional. The run file supports the following keys:
 
 ### `package` 
 Type: `List<String>`
@@ -37,14 +36,22 @@ Type: `String`
 Command to start the service.
 
 ### `root`
-Type `String`
+Type: `String`
 
 This key indicates which folder the web server should serve from.
 
 !!! warning
     This key only applies to services that have installed a web server [add-on](architecture/addons.md). 
 
-#### Examples
+### `storage`
+Type: `String`
+
+This key indicates which folder your application uses for persisting data on disk. The folder is expected to
+be in the root of the project and the path should not include any slashes.
+
+<br/>
+
+## Examples
 Here are a few basic examples:
 #### Java Application
     :::yaml
@@ -64,5 +71,5 @@ Here are a few basic examples:
     :::yaml
     package:
       - composer install
-
+    storage: receipts
 

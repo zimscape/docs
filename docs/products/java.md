@@ -116,54 +116,39 @@ Add the following line to the file `src/main/resources/application.properties`:
 server.port=9000
 ``` 
 
+Your application will now listen on port `9000`.
+
 ### Add a runfile
 
-Use a [runfile](../cd.md#runfile) to tell Zimscape servers how to handle your source code one you've pushed
+Use a [runfile](../cd.md#runfile) to tell Zimscape servers how to handle your source code once you've pushed
 it. Create a file `.runfile.yml` in the root of your project folder with the following content:
 
 ```yaml
 package:
   - mvn clean package
-run: java -jar target/spring-boot-0.0.1-SNAPSHOT.jar
+run: java -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
 
-### Initialize a repository
-
-Run the Git initialization command :
+Your project folder should now look something like this:
 
 ```
-$ git init
-Initialized empty Git repository in /gs-spring-boot/initial/.git/
-```
-
-Add the following to a `.gitignore` file to ignore compiled files.
-
-```
-target/
-```
-
-Your project folder `gs-spring-boot/initial` should now look something like this:
-
-```
-build.gradle  
 .git  
-.gitignore  
-gradle  
-gradlew  
-gradlew.bat  
+.gitignore
 .mvn  
 mvnw  
 mvnw.cmd  
 pom.xml  
+README.md
 .runfile.yml  
-settings.gradle  
 src  
 target
 ```
 
 Create your first commit:
 
-`git add . && git commit -m "initial commit"`
+```
+git add . && git commit -m "initial commit"
+```
 
 This saves a snapshot of your code base.
 
@@ -222,3 +207,17 @@ remote: Restarting daemon: java-staging.
 To gitserver.zimscape.com:java-project.git
  * [new branch]      staging -> staging
 ```
+
+Now open a new terminal and send a request to the service.
+
+```
+$ curl --insecure https://java.zimscape.com
+Hello World! Welcome digital explorer
+```
+
+If you get that response then congratulations you've successfully deployed a Spring Boot application to Zimscape.
+A few things to note there are that Zimscape automatically redirects `http` connections to `https`, however
+since we haven't [generated an SSL certificate](../console.md) yet the connection will complain about
+being insecure. As such, we add an `--insecure` tag to ignore the error for now.
+
+The next step will likely be to [generate an SSL certificate](../console.md) for your environments domain.

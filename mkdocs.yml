@@ -20,8 +20,8 @@ nav:
     - products/php.md
     - products/python.md
   - data.md
+  - console.md
   - billing.md
-  - troubleshooting.md
 theme:
   name: material
   palette:

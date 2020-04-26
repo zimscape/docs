@@ -27,10 +27,10 @@ Products:
 - [PHP](products/php.md)
 - [Python](products/python.md)
 
-[Data & Storage](data.md)
+[Data Access & Storage](data.md)
 
-<!-- [Console](console.md) -->
+[Console](console.md)
 
 [Billing](billing.md)
 
-[Troubleshooting](troubleshooting.md)
+<!-- [Troubleshooting](troubleshooting.md) -->
