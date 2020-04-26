@@ -28,6 +28,7 @@ staging:
   image: vusakhoza/nodejs:12
   before_script:
     - npm install -g zimscape-cli
+    - mkdir ~/.zimscape/cli/data/
     - cat $ZS_TOKEN > ~/.zimscape/cli/data/access_token
   script:
     - zimscape push docs.zimscape.com
