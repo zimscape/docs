@@ -29,6 +29,6 @@ staging:
   before_script:
     - npm install -g zimscape-cli
     - mkdir -p ~/.zimscape/cli/data
-    - cat $ZS_TOKEN >> ~/.zimscape/cli/data/access_token
+    - echo $ZS_TOKEN > ~/.zimscape/cli/data/access_token
   script:
     - zimscape push docs.zimscape.com
