@@ -15,23 +15,42 @@ integration problems here are a few differences between Zimscape and other CI/CD
 - Zimscape does not support integration pipelines out of the box
 - Zimscape recommends that tests and packaging be run client side or in CI/CD pipeline programs like
 Jenkins or Gitlab CI and then output meant for deployment deployed on Zimscape
-- For edge cases Zimscape does offer the ability to run commands before deploying a service via a `.runfile`
+- For edge cases Zimscape does offer the ability to run commands before deploying a service via a 
+`.runfile.yml`
 
 ### Runfile
 
 The runfile is a yaml document that post deployment hooks on Zimscape servers use to know how to run an 
 application and whether or not there are commands that should precede the service run command. 
 
-The run file supports **three** keys; `package`, `run` and `root` which respectively take as values,
-a string array of commands, a string command and a string path without a preceding slash.
-The file itself and all keys are optional. Here are a few basic examples:
+The run file supports **three** keys; `package`, `run` and `root`. The `.runfile.yml` file itself and 
+all keys are optional.
 
+### `package` 
+Type: `List<String>`
+
+Commands that should run before the service starts.
+
+### `run`
+Type: `String`
+
+Command to start the service.
+
+### `root`
+Type `String`
+
+This key indicates which folder the web server should serve from.
+
+!!! warning
+    This key only applies to services that have installed a web server [add-on](architecture/addons.md). 
+
+#### Examples
+Here are a few basic examples:
 #### Java Application
     :::yaml
     package:
       - mvn clean package
-    run:
-      - java -jar target/demo-app.jar
+    run: java -jar target/demo-app.jar
 
 #### Mkdocs (Python)
     :::yaml

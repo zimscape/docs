@@ -11,6 +11,7 @@ Architecture:
 - [Projects](architecture/projects.md)
 - [Containers](architecture/containers.md)
 - [Environments](architecture/environments.md)
+- [Add Ons](architecture/addons.md)
 - [Networking](architecture/networking.md)
 
 [Command Line Interface](cli.md)

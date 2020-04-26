@@ -8,6 +8,7 @@ nav:
       - architecture/projects.md
       - architecture/containers.md
       - architecture/environments.md
+      - architecture/addons.md
       - architecture/networking.md
   - cli.md
   - cd.md
@@ -33,3 +34,4 @@ theme:
   favicon: ZimScape-03.png
 markdown_extensions:
   - codehilite
+  - admonition

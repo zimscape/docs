@@ -28,7 +28,7 @@ Verify your version
 
 ```
 $ zimscape -v
-zimscape-cli/0.0.8 linux-x64 node-v11.10.1
+zimscape-cli/0.0.11 linux-x64 node-v11.10.1
 ```
 <!-- usagestop -->
 ### Available Commands
