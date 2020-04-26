@@ -16,20 +16,15 @@ before_script:
 package:
   stage: package
   script:
-    -
     - pip install mkdocs
+    - pip install mkdocs-material
     - mkdocs build
 
 staging:
   stage: staging
-  image: vusakhoza/zimscape-backend:1.0.0
+  image: vusakhoza/nodejs:12
+  before_script:
+    - npm install zimscape-cli
   script:
-    - ssh -t $SSH_USER@$STAGING_IP "rm -rf $PROJECT_PATH"
-    - ssh -t $SSH_USER@$STAGING_IP "cd $BASE_PATH"
-    - ssh -t $SSH_USER@$STAGING_IP "cd $BASE_PATH && git clone --single-branch --branch develop git@gitlab.zimscape.com:vusakhoza/zimscape-spring.git"
-    - ssh -t $SSH_USER@$STAGING_IP "cd $PROJECT_PATH && mvn clean -P lab compile liquibase:update"
-    - ssh -t $SSH_USER@$STAGING_IP "cd $PROJECT_PATH && mvn clean package"
-    - ssh -t $SSH_USER@$STAGING_IP "cd $PROJECT_PATH && ./zimscape stop"
-    - ssh -t $SSH_USER@$STAGING_IP "cd $PROJECT_PATH && ./zimscape start"
-
+    - zimscape push docs.zimscape.com
 

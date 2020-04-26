@@ -6,8 +6,9 @@ Zimscape currently supports the following Java versions:
 - 11
 
 !!!warning
-    It's worth noting that Zimscape does not support fringe cases to do with Application Server's such as
-    Jboss and Tomcat. Deploying services that depend or bundle these might not work out of the box. 
+    It's worth noting unfortunately that Zimscape does not currently support fringe cases to do with 
+    Application Server's such as Jboss and WebSphere. Deploying services that depend or bundle these 
+    might not work out of the box. 
 
 We are going to demonstrate how to deploy a Java application on Zimscape by deploying a basic Spring Boot
 'Hello World' application.
