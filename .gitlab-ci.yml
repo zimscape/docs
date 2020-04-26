@@ -1,4 +1,7 @@
 image: vusakhoza/python:3.6
+variables:
+  LC_ALL: "C.UTF-8"
+  LANG: "C.UTF-8"
 
 stages:
   - package
