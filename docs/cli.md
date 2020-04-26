@@ -24,12 +24,6 @@ If you're new to Git you can have a quick look at it
 $ npm install -g zimscape-cli
 ```
 
-Verify your version 
-
-```
-$ zimscape -v
-zimscape-cli/0.0.11 linux-x64 node-v11.10.1
-```
 <!-- usagestop -->
 ### Available Commands
 
