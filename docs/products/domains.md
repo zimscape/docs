@@ -1,6 +1,6 @@
 # Domain Names
 
-#### Changing Nameservers
+### Changing Nameservers
 
 If you already own a domain name then your domain name is pointed to your registrars `nameservers`. 
 Upon successful checkout you will receive an email saying that you need to change those nameservers 
@@ -14,7 +14,7 @@ ns1.zimscape.com
 ns2.zimscape.com
 ```
 
-#### DNS Records
+### DNS Records
 
 DNS Records are the configuration records that tell traffic that's trying to access your domain name 
 where the domain name's respective servers are. DNS records basically link the domain name to server IPs. 

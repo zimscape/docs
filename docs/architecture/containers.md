@@ -1,12 +1,14 @@
 # Containers
 
-Applications on Zimscape run in containerized environments. Each product is deployed in its own environment 
-with a set level of resources based on the plan chosen. Containerization as a convention has many benefits 
-documented across the internet. The ones we leverage on the most are:
+Applications on Zimscape run in containerized environments. These are essentially Debian based micro 
+operating systems that have server side programming languages and applications pre-installed. 
+Each product is deployed in its own container with a set level of resources based on the plan chosen. 
+Containerization as a convention has many benefits documented across the internet, however the ones we 
+leverage on the most are:
 
 - Can be quickly spawned or stripped down
 - Consistent predictable way of managing data persistence
-- Abstraction of software architecture components (for one example, see [Data & Storage](../data.md))
+- Abstraction of infrastructure components (for one example, see [Data & Storage](../data.md))
 - Simplified scaling
 - Automated load balancing of instances
 
@@ -20,5 +22,6 @@ are primarily for the development, staging and live environments but can be re-p
 to expose more than one port.
 - Each container has a private hostname accessible only by applications deployed in the same project. This 
 is convenient and faster when app to app communication doesn't require going over the internet e.g. a java
-application communicating with a mysql instance.  
+application communicating with a mysql instance. For services running in that container the private hostname 
+can be used interchangeably with localhost.
 
