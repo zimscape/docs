@@ -31,4 +31,4 @@ staging:
     - mkdir -p ~/.zimscape/cli/data
     - echo "$ZS_TOKEN" > ~/.zimscape/cli/data/access_token
   script:
-    - zimscape push docs.zimscape.com
+    - env DEBUG=global zimscape push docs.zimscape.com
