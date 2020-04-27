@@ -13,7 +13,7 @@ This tutorial assumes that you have the following:
 - The Zimscape [CLI](../cli.md)
 - A text editor
 - Python 3.6 or later
-- The latest Django version
+- The latest Django version and Gunicorn
 - Git
 
 Also required is a general appreciation of Git commands. [Here's](https://git-scm.com/book/en/v2) a tutorial
@@ -29,62 +29,66 @@ Clone the sample source code from the Zimscape tutorials repository.
 git clone git@github.com:zimscape/django_demo.git
 ```
 
-### Add a Controller
+### Add a View
 
 Open up the `django_demo` folder in your favorite text editor, open the file 
 `hello/views.py` and update the file with the following code:
 
     :::Python
-    package com.example.demo;
+    from django.http import HttpResponse
     
-    import org.springframework.web.bind.annotation.RestController;
-    import org.springframework.web.bind.annotation.RequestMapping;
+    def index(request):
+        return HttpResponse("Hello, world. Welcome digital explorer\n")
+
+To call the view, we need to map it to a URL. This is done in the `urls.py` file. Create a `hello/urls.py`
+file and update it with this content:
+
+    :::python
+    from django.urls import path
     
-    @RestController
-    public class HelloController {
+    from . import views
     
-        @RequestMapping("/")
-        public String index() {
-            return "Hello World! Welcome digital explorer\n";
-        }
+    urlpatterns = [
+        path('', views.index, name='index'),
+    ]
     
-    }
+Now update the root url configuration to point to the django app we just created. Open 
+`django_demo/django_demo/urls.py` and update the file with the following code:
+
+    :::diff
+    from django.contrib import admin
+    from django.urls import include, path
+    
+    urlpatterns = [
+    +   path('', include('hello.urls')),
+        path('admin/', admin.site.urls),
+    ]
 
 ### Running the application
 
 Once that's done, test the application by running
 
 ```
-./mvnw spring-boot:run
-```
+$ python manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
 
-You should see output similar to:
+System check identified no issues (0 silenced).
 
-```
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::        (v2.2.6.RELEASE)
+You have 17 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
 
-2020-04-25 19:00:34.697  INFO 22093 --- [           main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
-2020-04-25 19:00:35.351  INFO 22093 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2020-04-25 19:00:35.358  INFO 22093 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-04-25 19:00:35.358  INFO 22093 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
-2020-04-25 19:00:35.402  INFO 22093 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-04-25 19:00:35.402  INFO 22093 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 655 ms
-2020-04-25 19:00:35.516  INFO 22093 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-04-25 19:00:35.614  INFO 22093 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2020-04-25 19:00:35.616  INFO 22093 --- [           main] com.example.demo.DemoApplication         : Started DemoApplication in 1.192 seconds (JVM running for 1.484)
+April 26, 2020 - 23:49:59
+Django version 3.0.5, using settings 'django_demo.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
 ```
 
 Open a different terminal window and make a request to the service:
 
 ```
-$ curl localhost:8080
-Hello World! Welcome digital explorer
+$ curl localhost:8000
+Hello, world. Welcome digital explorer
 ```
 
 Looks like everything is setup nicely. Hit Ctrl+C to close the server.
@@ -100,20 +104,36 @@ your container exposes for your chosen environment use the cli to list available
 $ zimscape ls
 one moment please...
 Product   Project                       Domain                        Type       Status    Ports       
-Python      zimscape.com                  Python.zimscape.com             staging    active    80  -> 9000 
+PYTHON    zimscape.com                  python.zimscape.com           staging    active    80  -> 8000 
 ```
 
-The `Ports` column shows that requests on port 80 on the domain `Python.zimscape.com` get 
-forwarded to the container port 9000. As such, update the port that the test application listens on
-to port 9000.
+The `Ports` column shows that requests on port 80 on the domain `python.zimscape.com` get 
+forwarded to the container port 8000. 
 
-Add the following line to the file `src/main/resources/application.properties`:
+We will be using gunicorn as the wsgi server. As such, the appropriate command to use to start up the 
+gunicorn server would look something like this:
 
 ```
-server.port=9000
-``` 
+gunicorn -w 3 -b python-zimscape-com-0:8000 django_demo.wsgi
+```
 
-Your application will now listen on port `9000`.
+Here. We're binding to the hostname of the container. See [networking](../architecture/networking.md) 
+for more on networking and containerization. You can find the hostname of your environment on the 
+Console > Manage Project > Manage Python > Access page of the Zimscape website.
+
+We'll add this line to the `.runfile.yml`.
+
+Finally, update the `ALLOWED_HOSTS` array with the host we will be deploying the application on. Open
+`django_demo/django_demo/settings.py` and update the array:
+
+```
+ALLOWED_HOSTS = [ 'python.zimscape.com' ]
+```
+
+!!!warning
+    Gunicorn will expect to have the exposed port accessible. It is up to the developer to make sure
+    there are no port conflicts. For example, this setup would not work if the Apache Add On is installed
+    since it listens on the available environment ports.
 
 ### Add a runfile
 
@@ -122,23 +142,21 @@ it. Create a file `.runfile.yml` in the root of your project folder with the fol
 
 ```yaml
 package:
-  - mvn clean package
-run: Python -jar target/demo-0.0.1-SNAPSHOT.jar
+  - pip install django
+run: gunicorn -w 3 -b python-zimscape-com-0:8000 django_demo.wsgi
 ```
 
 Your project folder should now look something like this:
 
 ```
-.git  
+db.sqlite3
+django_demo
+.git
 .gitignore
-.mvn  
-mvnw  
-mvnw.cmd  
-pom.xml  
+hello
+manage.py
 README.md
-.runfile.yml  
-src  
-target
+.runfile.yml
 ```
 
 Create your first commit:
@@ -156,17 +174,17 @@ List the available environments using the [Zimscape cli](../cli.md):
 ```
 $ zimscape ls
 one moment please...
-Product   Project                       Domain                        Type       Status    Ports
-Python      zimscape.com                  Python.zimscape.com             staging    active    80  -> 9000 
+Product   Project                       Domain                        Type       Status    Ports       
+PYTHON    zimscape.com                  python.zimscape.com           staging    active    80  -> 8000 
 ```
 
 Push to the environment domain's remote:
 
 ```
-$ zimscape push Python.zimscape.com
+$ zimscape push python.zimscape.com
 one moment please...
 error: src refspec staging does not match any.
-error: failed to push some refs to 'zimscape@gitserver.zimscape.com:Python-project.git'
+error: failed to push some refs to 'zimscape@gitserver.zimscape.com:python-project.git'
 ```
 
 You should encounter an error. This error happens because the `staging` branch doesn't exist.
@@ -186,7 +204,7 @@ Switched to a new branch 'staging'
 Now try to push to the staging remote again.
 
 ```
-$ zimscape push Python.zimscape.com
+$ zimscape push python.zimscape.com
 one moment please...
 Counting objects: 27, done.
 Delta compression using up to 8 threads.
@@ -208,13 +226,13 @@ To gitserver.zimscape.com:Python-project.git
 Now open a new terminal and send a request to the service.
 
 ```
-$ curl --insecure https://Python.zimscape.com
-Hello World! Welcome digital explorer
+$ curl --insecure https://python.zimscape.com
+Hello, world. Welcome digital explorer
 ```
 
-If you get that response then congratulations you've successfully deployed a Spring Boot application to Zimscape.
+If you get that response then congratulations you've successfully deployed a Django application to Zimscape.
 A few things to note there are that Zimscape automatically redirects `http` connections to `https`, however
 since we haven't [generated an SSL certificate](../console.md) yet the connection will complain about
 being insecure. As such, we add an `--insecure` tag to ignore the error for now.
 
-The next step will likely be to [generate an SSL certificate](../console.md) for your environments domain.
+The next step will likely be to [generate an SSL certificate](../console.md) for your environment's domain.

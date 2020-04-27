@@ -223,4 +223,4 @@ A few things to note there are that Zimscape automatically redirects `http` conn
 since we haven't [generated an SSL certificate](../console.md) yet the connection will complain about
 being insecure. As such, we add an `--insecure` tag to ignore the error for now.
 
-The next step will likely be to [generate an SSL certificate](../console.md) for your environments domain.
+The next step will likely be to [generate an SSL certificate](../console.md) for your environment's domain.
