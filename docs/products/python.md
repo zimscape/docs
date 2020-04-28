@@ -110,14 +110,14 @@ PYTHON    zimscape.com                  python.zimscape.com           staging   
 The `Ports` column shows that requests on port 80 on the domain `python.zimscape.com` get 
 forwarded to the container port 8000. 
 
-We will be using gunicorn as the wsgi server. As such, the appropriate command to use to start up the 
-gunicorn server would look something like this:
+The Python dev environment comes pre-installed with Gunicorn as the wsgi server. 
+As such, the appropriate command to use to run our application would look something like this:
 
 ```
 gunicorn -w 3 -b python-zimscape-com-0:8000 django_demo.wsgi
 ```
 
-Here. We're binding to the hostname of the container. See [networking](../architecture/networking.md) 
+Here we're binding to the hostname of the container. See [networking](../architecture/networking.md) 
 for more on networking and containerization. You can find the hostname of your environment on the 
 Console > Manage Project > Manage Python > Access page of the Zimscape website.
 
