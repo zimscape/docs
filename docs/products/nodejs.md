@@ -259,7 +259,7 @@ $ curl --insecure https://nodejs.zimscape.com
 Hello World! Welcome digital explorer!
 ```
 
-If you get that response then congratulations you've successfully deployed a Django application to Zimscape.
+If you get that response then congratulations you've successfully deployed a Sails.js application to Zimscape.
 A few things to note there are that Zimscape automatically redirects `http` connections to `https`, however
 since we haven't [generated an SSL certificate](../console.md) yet the connection will complain about
 being insecure. As such, we add an `--insecure` tag to ignore the error for now.
